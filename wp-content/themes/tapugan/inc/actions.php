@@ -80,7 +80,20 @@ function add_js()
 
     }
 
-    
+    if (is_singular('products') ){
+
+
+        wp_enqueue_style('product', get_template_directory_uri().'/dist/css/product-page.css');
+
+    }
+    if (is_page_template('page-faq.php') ){
+
+
+        wp_enqueue_style('faq', get_template_directory_uri().'/dist/css/faq-page.css');
+
+    }
+
+
     wp_register_script('app',get_template_directory_uri().'/dist/js/app.min.js');
     wp_enqueue_script('app');
 }

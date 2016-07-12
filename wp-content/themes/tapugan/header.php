@@ -9,7 +9,7 @@
     <title><?php document_title(); ?></title>
     <?php wp_head(); ?>
 
-    <link rel="shortcut icon" href="<?php echo TEMPLATEURI; ?>/img/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo TEMPLATEURI; ?>/favicon.ico" />
 
 
 
@@ -80,6 +80,8 @@
 
                 foreach ((array)$menu_items as $key => $menu_item) {
 
+
+                 if($menu_item->object=='page'){
                     if($post->ID==$menu_item->object_id){
                         $active = ' active';
                     } else {
@@ -87,6 +89,18 @@
 
                     }
                    $menu_title =  $menu_item->title;
+                 }
+                 elseif($menu_item->object=='products_cat') {
+                     $id = get_queried_object()->term_id;
+                     if($id==$menu_item->object_id){
+                         $active = ' active';
+                     } else {
+                         $active = '';
+
+                     }
+                     $menu_title =  $menu_item->title;
+
+                 }
                     ?>
 
                     <a href="<?= $menu_item->url; ?>" titile="<?= $menu_title; ?>" class="menu__item<?= $active; ?>"><?= $menu_title; ?></a>
@@ -94,7 +108,7 @@
 
                     <?php
                 }?>
-                
+
 
             </div>
             <!-- /menu__wrap -->

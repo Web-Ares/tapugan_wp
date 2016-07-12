@@ -13,12 +13,27 @@
 
         foreach ((array)$menu_items as $key => $menu_item) {
 
-            if($post->ID==$menu_item->object_id){
-                $active = ' active';
-            } else {
-                $active = '';
+            if($menu_item->object=='page'){
+                if($post->ID==$menu_item->object_id){
+                    $active = ' active';
+                } else {
+                    $active = '';
 
-            } ?>
+                }
+                $menu_title =  $menu_item->title;
+            }
+            elseif($menu_item->object=='products_cat') {
+                $id = get_queried_object()->term_id;
+                if($id==$menu_item->object_id){
+                    $active = ' active';
+                } else {
+                    $active = '';
+
+                }
+                $menu_title =  $menu_item->title;
+
+            }
+            ?>
 
             <a href="<?= $menu_item->url; ?>" class="site__footer-menu__item<?= $active; ?>"><?= $menu_item->title; ?></a>
 

@@ -1,6 +1,8 @@
-<?php  get_header(); ?>
+<?php  get_header();
+$id = get_queried_object()->term_id;
+?>
 
-    <div class="site__ban" style="background-image: url(<?php echo DIRECT; ?>img/no_flash.jpg)"></div>
+    <div class="site__ban" style="background-image: url(<?php the_field('choose_the_main_background_on_page','products_cat_'.$id.'') ?>) "></div>
 
     <!-- site__content -->
     <div class="site__content">
@@ -9,17 +11,14 @@
         <h1 class="site__title"><?php single_cat_title(); ?></h1>
         <!-- /site__title -->
 
-        <?php
-        $id = get_queried_object()->term_id;
-
-        the_field('category_description_copy','products_cat_'.$id.'')?>
+        <?php the_field('category_description_copy','products_cat_'.$id.'')?>
 
         <?php if($pdf = get_field('link_to_pdf','products_cat_'.$id.'')):?>
-        <a href="<?php echo TEMPLATEURI; ?>/docs/roduct_list_chips.pdf" target="_blank">למוצרי השוק המוסדי &gt;&gt;</a>
+        <p><a href="<?= $pdf; ?>" target="_blank">למוצרי השוק המוסדי &gt;&gt;</a></p>
         <?php endif;
 
         if($youtube = get_field('link_on_youtube','products_cat_'.$id.'')):?>
-            <a href="<?= $youtube; ?>" target="_blank">לסרטון &gt;&gt;</a>
+            <p><a href="<?= $youtube; ?>" target="_blank">לסרטון &gt;&gt;</a></p>
         <?php endif; ?>
 
         <!-- category -->
