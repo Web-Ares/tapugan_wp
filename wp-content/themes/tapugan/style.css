@@ -1,0 +1,16 @@
+/*
+Theme Name: Tapugan
+Author: Expiria
+Version: 1.0
+*/
+.wpcf7-response-output{
+    display: none !important;
+}
+
+.wpcf7-not-valid {
+    border: 1px solid red !important;
+}
+
+span.wpcf7-not-valid-tip {
+    display: none !important;
+}
