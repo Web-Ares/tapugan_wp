@@ -3,11 +3,12 @@ $thumb_id = get_post_thumbnail_id();
 $thumb_url = wp_get_attachment_image_src($thumb_id,'full')[0];
 $category = get_the_terms( get_the_ID(), 'products_cat');
 $title = get_the_title();
+
 $link_on_category = get_term_link( $category[0]->term_id );
 ?>
 
 
-    <div class="site__ban" style="background-image: url(img/no_flash.jpg)"></div>
+    <div class="site__ban" style="background-image: url(<?php the_field('choose_the_main_background_on_page','products_cat_'.$category[0]->term_id.'') ?>)"></div>
 
     <!-- site__content -->
     <div class="site__content">
@@ -25,71 +26,63 @@ $link_on_category = get_term_link( $category[0]->term_id );
 
                 <h2 class="product__info-title"><?= $title;  ?></h2>
 
-                <p><strong>משקל נקי:</strong> 1.5 ק"ג</p>
-                <p><strong>רכיבי המוצר: </strong>תפוח אדמה (94%), שמן מהצומח, דקסטרוזה, מייצב (E450)</p>
+                <?php the_field( 'text_block' ); ?>
+
+                <?php
+
+                // check if the repeater field has rows of data
+                if( have_rows('add_a_instructions_element') ): ?>
+
                 <div>
-                    <strong>הוראות ההכנה: </strong>
-                    <dl>
-                        <dt>בשמן עמוק:</dt>
-                        <dd>: 2-3 דקות ב Cº180, או עד שמזהיב.<dd>
-                    </dl>
-                    <dl>
-                        <dt>בתנור: </dt>
-                        <dd> 15 דקות ב  Cº220, או עד שמזהיב.<</dd>
-                    </dl>
-                </div>
-                <p><strong>אחסון: </strong> מוצר קפוא. אין להפשיר לפני השימוש, אין להקפיא לאחר ההפשרה</p>
+
+                    <strong><?php the_field('add_instructions_title'); ?></strong>
+
+                   <?php  // loop through the rows of data
+                    while ( have_rows('add_a_instructions_element') ) : the_row(); ?>
+
+                        <dl>
+                            <dt><?php the_sub_field('title_of_instruction'); ?></dt>
+                            <dd><?php the_sub_field('instruction_text'); ?></dd>
+                        </dl>
+
+                    <?php endwhile; ?>
+                    </div>
+               <?php  endif; ?>
+
+                <?php the_field( 'text_block_copy_2' ); ?>
+
+
+                <?php
+
+                // check if the repeater field has rows of data
+                if( have_rows('table_of_product') ): ?>
 
                 <table>
                     <thead>
                     <tr>
-                        <td colspan="2">סימון תזונתי ב 100 גר':</td>
+                        <td colspan="2"><?php the_field('title_for_table_of_product'); ?></td>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>אנרגיה (קלוריות)</td>
-                        <td>156</td>
-                    </tr>
-                    <tr>
-                        <td>חלבונים (גרם)</td>
-                        <td>2.3</td>
-                    </tr>
-                    <tr>
-                        <td>פחמימות (גרם)</td>
-                        <td>23.3</td>
-                    </tr>
-                    <tr>
-                        <td>שומנים (גרם)</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>מתוכו שומן רווי (גרם)</td>
-                        <td>3.4</td>
-                    </tr>
-                    <tr>
-                        <td>שומן טראנס (גרם)</td>
-                        <td>פחות מ 0.5</td>
-                    </tr>
-                    <tr>
-                        <td>כולסטרול (מ"ג)</td>
-                        <td>פחות מ 2.5</td>
-                    </tr>
-                    <tr>
-                        <td>נתרן (מ"ג)</td>
-                        <td>45</td>
-                    </tr>
+
+                    <?php  // loop through the rows of data
+                    while ( have_rows('table_of_product') ) : the_row(); ?>
+
+                        <tr>
+                            <td><?php the_sub_field('add_a_title_of_column'); ?></td>
+                            <td><?php the_sub_field('add_a_description_of_column'); ?></td>
+                        </tr>
+
+                    <?php endwhile; ?>
+
                     </tbody>
                 </table>
+                <?php  endif; ?>
+
 
                 <div class="product__info-shot">
                     <div>
-                        <p><strong>תי"נ: </strong>GMP</p>
-                        <p><strong>כשרויות: </strong>
-                            בד"ץ העדה החרדית ירושלים (למעט פסח).</p>
-                        <p>
-                            כשר פרווה בהשגחת הרב יעקב אריאל רמת גן.
-                        </p>
+                        <?php the_field( 'text_block_copy' ); ?>
                         <a class="btn-back" href="<?= $link_on_category; ?>"></a>
                     </div>
                     <img src="<?= DIRECT; ?>pic/kashrut.png" alt="כשר בהשגחת הבדצ" title="כשר בהשגחת הבדצ">

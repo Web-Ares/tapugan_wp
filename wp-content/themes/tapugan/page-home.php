@@ -5,16 +5,9 @@
 get_header(); ?>
 
 
-<!-- flash-animation -->
-<div class="flash-animation">
-    <div id="falshCon">
-        <div id="flashBanner">
-            <div id="flash"></div>
-        </div>
-    </div>
-
+<div class="site__ban site__ban_flash" data-path="<?= DIRECT; ?>">
+    <div id="flash"></div>
 </div>
-<!-- /flash-animation -->
 
 <!-- site__content -->
 <div class="site__content">

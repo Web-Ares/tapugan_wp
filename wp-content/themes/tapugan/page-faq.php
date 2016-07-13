@@ -5,13 +5,13 @@
 get_header(); ?>
 
 
-    <div class="site__ban" style="background-image: url(img/faq_img.jpg)"></div>
+    <div class="site__ban" style="background-image: url(<?php the_field(  'add_a_main_background_image' )?>)"></div>
 
     <!-- site__content -->
     <div class="site__content">
 
         <!-- site__title -->
-        <h1 class="site__title">שאלות ותשובות</h1>
+        <h1 class="site__title"><?php the_title(); ?></h1>
         <!-- /site__title -->
 
         <!-- faq -->

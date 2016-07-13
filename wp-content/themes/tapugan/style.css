@@ -4,13 +4,28 @@ Author: Expiria
 Version: 1.0
 */
 .wpcf7-response-output{
-    display: none !important;
+    border: none !important;
 }
 
 .wpcf7-not-valid {
-    border: 1px solid red !important;
+    border: 1px solid #d11b1c !important;
+    color: #d11b1c !important;
 }
 
 span.wpcf7-not-valid-tip {
-    display: none !important;
+    /*display: none !important;*/
+    color: #d11b1c !important;
+}
+div.wpcf7-validation-errors {
+    border: 2px solid #f7e700;
+    color : orange !important;
+}
+
+div.wpcf7-mail-sent-ng {
+    border: 2px solid #d11b1c;
+    color: #d11b1c !important;
+}
+div.wpcf7-mail-sent-ok {
+    border: 2px solid #398f14;
+    color: #398f14 !important;
 }

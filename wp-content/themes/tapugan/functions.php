@@ -13,6 +13,9 @@ function mojFavicon() {
 }
 add_action( 'admin_head', 'mojFavicon' );
 
+//add_filter( 'wpcf7_validate_configuration', '__return_false' );
+
+
 // Load library files.
 require_once( TEMPLATEINC . '/cpt.php' );
 require_once( TEMPLATEINC . '/template.php' );

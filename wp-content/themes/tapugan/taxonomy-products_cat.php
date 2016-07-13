@@ -62,7 +62,7 @@ $id = get_queried_object()->term_id;
                         <!-- category__info -->
                         <div class="category__info">
                             <h2 class="category__title"><?php the_title(); ?></h2>
-                            <p>טוגני תפוחי אדמה עם קליפה מוקפאים<br/>משקל נקי: 1.5 ק"ג</p>
+                            <?php the_excerpt(); ?>
                             <a href="<?= $cur_link; ?>" class="site__link">לחץ כאן</a>
                         </div>
                         <!-- /category__info -->
