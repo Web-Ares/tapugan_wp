@@ -62,9 +62,6 @@ function add_js()
 
 
     if (is_page_template('page-home.php')){
-
-        wp_register_script('swfobject',get_template_directory_uri().'/dist/js/vendors/swfobject.js');
-        wp_enqueue_script('swfobject');
         
         wp_enqueue_style('home', get_template_directory_uri().'/dist/css/home.css');
     }

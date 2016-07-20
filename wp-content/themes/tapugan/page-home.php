@@ -5,8 +5,15 @@
 get_header(); ?>
 
 
-<div class="site__ban site__ban_flash" data-path="<?= DIRECT; ?>">
-    <div id="flash"></div>
+<div class="mountains">
+    <span class="mountains__bird mountains__bird_1"><img src="<?= DIRECT; ?>img/mountains/bird.GIF" alt=""></span>
+    <span class="mountains__bird mountains__bird_2"><img src="<?= DIRECT; ?>img/mountains/bird.GIF" alt=""></span>
+    <span class="mountains__bird mountains__bird_3"><img src="<?= DIRECT; ?>img/mountains/bird.GIF" alt=""></span>
+    <span class="mountains__bird mountains__bird_4"><img src="<?= DIRECT; ?>img/mountains/bird.GIF" alt=""></span>
+    <span class="mountains__bird mountains__bird_5"><img src="<?= DIRECT; ?>img/mountains/bird.GIF" alt=""></span>
+    <span class="mountains__mountain"></span>
+    <span class="mountains__potatoes"></span>
+    <span class="mountains__carpet"></span>
 </div>
 
 <!-- site__content -->

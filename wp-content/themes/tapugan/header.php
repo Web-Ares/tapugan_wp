@@ -13,33 +13,7 @@
 
 
 
-<?php if(is_front_page()):?>
-    <script type="text/javascript">
-
-        var flashvars = {};
-        var params = {};
-        params.scale = "noscale";
-        params.menu = "false";
-        params.salign = "rt";
-        params.allowFullScreen = "true";
-        params.quality="best";
-        params.devicefont="false";
-        params.allowScriptAccess="always";
-        params.wmode="transparent";
-
-        var attributes = {};
-
-        swfobject.embedSWF('includes/tapugan_preloader.swf', "flash", "1525", "530", "10",false, flashvars, params, attributes);
-
-        function checkWidth(){
-            var windowWidth = parseInt(document.documentElement.clientWidth);
-            if (windowWidth < 1000){
-                document.body.style.overflow="auto";
-                document.getElementById('flashBanner').style.width = 1012+'px';
-            }
-        }
-    </script>
-<?php endif;
+<?php
 
 if(is_page_template('page-contact.php')): ?>
 <!--    <script type="text/javascript">-->
@@ -141,9 +115,7 @@ if(is_page_template('page-contact.php')): ?>
 
         <!-- menu -->
         <div class="menu">
-            <object type="application/x-shockwave-flash" data="<?= DIRECT; ?>/tapugan_navigation_792x214.swf">
-                <param name="movie" value="tapugan_navigation_792x214.swf">
-                <param name="wmode" value="transparent">
+            <div class="menu__wrap">
 
                 <?php
                 $image_array = array();
@@ -153,13 +125,12 @@ if(is_page_template('page-contact.php')): ?>
                     'img/special_nav.png',
                     'img/vegetation_nav.png',
                     'img/faq_nav.png',
-                    'img/faq_nav.png',
                     'img/home_nav.png'
                 ];
 
                 $locations = get_nav_menu_locations();
                 $menu_items = wp_get_nav_menu_items($locations['menu']);
-
+                $count_1 =1;
                 foreach ((array)$menu_items as $key => $menu_item) {
 
 
@@ -185,12 +156,12 @@ if(is_page_template('page-contact.php')): ?>
                     }
                     ?>
 
-                    <a href="<?= $menu_item->url; ?>"><img src="<?= DIRECT.$image_array[$key] ?>" alt="<?= $menu_title; ?>" title="<?= $menu_title; ?>"></a>
+                    <a href="<?= $menu_item->url; ?>" class="menu__item menu__item_<?= $count_1;?>"><?= $menu_title; ?><span class="menu__rain"></span></a>
                     <?php
+                    $count_1++;
                 }?>
 
-
-            </object>
+        </div>
         </div>
         <!-- /menu -->
         
