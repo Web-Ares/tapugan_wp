@@ -24,7 +24,7 @@ $link_on_category = get_term_link( $category[0]->term_id );
 
             <div class="product__info">
 
-                <h2 class="product__info-title"><?= $title;  ?></h2>
+
 
                 <?php the_field( 'text_block' ); ?>
 
@@ -60,7 +60,10 @@ $link_on_category = get_term_link( $category[0]->term_id );
                 <table>
                     <thead>
                     <tr>
-                        <td colspan="2"><?php the_field('title_for_table_of_product'); ?></td>
+                        <?php $count = get_field('choose_2_or_3_columns_in_table');
+                        ($count=='r3') ? $count=3 : $count=2; ?>
+
+                        <td colspan="<?= $count; ?>"><?php the_field('title_for_table_of_product'); ?></td>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,6 +74,9 @@ $link_on_category = get_term_link( $category[0]->term_id );
                         <tr>
                             <td><?php the_sub_field('add_a_title_of_column'); ?></td>
                             <td><?php the_sub_field('add_a_description_of_column'); ?></td>
+                            <?php if($count=='3'):?>
+                            <td><?php the_sub_field('add_a_third_line_of_column'); ?></td>
+                            <?php endif; ?>
                         </tr>
 
                     <?php endwhile; ?>
@@ -86,7 +92,9 @@ $link_on_category = get_term_link( $category[0]->term_id );
                         <a class="btn-back" href="<?= $link_on_category; ?>"></a>
                     </div>
                     <img src="<?= DIRECT; ?>pic/kashrut.png" alt="כשר בהשגחת הבדצ" title="כשר בהשגחת הבדצ">
+
                 </div>
+                <p> ט.ל.ח. מידע מפורט ועדכני על מוצרים , ע"ג האריזה.</p>
             </div>
 
         </div>

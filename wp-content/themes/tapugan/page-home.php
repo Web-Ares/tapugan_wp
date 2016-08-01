@@ -45,7 +45,8 @@ get_header(); ?>
 
                     $terms = get_terms( 'products_cat', array(
                     'hide_empty' => true,
-                    'orderby' => 'term_id'
+                    'orderby' => 'term_id',
+                    'parent' => '0'
                 ) );
 
                 if($terms):

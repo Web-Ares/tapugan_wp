@@ -21,13 +21,10 @@ get_header(); ?>
 
                 <?php the_field('text_after_title')?>
             <div class="contact__info">
-                <p>
-                    <strong>כתובת המפעל:</strong>
-                    תעשיות תפוגן &nbsp;|&nbsp; שער הנגב ת.ד 571 &nbsp;|&nbsp; שדרות 8701402
-                </p>
-                <p><strong>טלפון:</strong> 08-6808331</p>
-                <p><strong>שירות לקוחות:</strong> 08-6108800</p>
+                <?php the_field( 'contact_info' ); ?>
             </div>
+
+
 
 
             <?php echo do_shortcode('[contact-form-7 id="107" title="Contact Form" html_id="tofes"]'); ?>

@@ -1,1 +1,1 @@
-<?php //wp_redirect(esc_url( home_url( '/' ) )); ?>
+<?php wp_redirect(esc_url( home_url( '/' ) )); ?>
