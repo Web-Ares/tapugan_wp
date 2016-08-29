@@ -3,7 +3,8 @@ $thumb_id = get_post_thumbnail_id();
 $thumb_url = wp_get_attachment_image_src($thumb_id,'full')[0];
 $category = get_the_terms( get_the_ID(), 'products_cat');
 $title = get_the_title();
-
+$alt_text = get_post_meta($thumb_id , '_wp_attachment_image_alt', true);
+$title_t = get_post(get_post_thumbnail_id())->post_title;
 $link_on_category = get_term_link( $category[0]->term_id );
 ?>
 
@@ -20,7 +21,7 @@ $link_on_category = get_term_link( $category[0]->term_id );
             <h1 class="product__title"><?= $category[0]->name; ?></h1>
             <!-- /product__title -->
 
-            <div class="product__pic"><img src="<?= $thumb_url; ?>" alt="<?= $title;  ?>" title="<?= $title;  ?>"></div>
+            <div class="product__pic"><img src="<?= $thumb_url; ?>" alt="<?= $alt_text;  ?>" title="<?= $title_t;  ?>"></div>
 
             <div class="product__info">
 

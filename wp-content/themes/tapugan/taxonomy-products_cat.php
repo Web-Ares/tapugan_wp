@@ -74,12 +74,14 @@ $id = get_queried_object()->term_id;
                     $cur_title = get_the_title();
                     $thumb_id = get_post_thumbnail_id();
                     $thumb_url = wp_get_attachment_image_src($thumb_id,'full')[0];
+                    $alt_text = get_post_meta($thumb_id , '_wp_attachment_image_alt', true);
+                    $title_t = get_post(get_post_thumbnail_id())->post_title;
                     ?>
 
                     <!-- category__item -->
                     <div class="category__item">
 
-                        <a href="<?= $cur_link; ?>" class="category__pic"><img src="<?= $thumb_url; ?>" alt="<?= $cur_title; ?>" title="<?= $cur_title; ?>"/></a>
+                        <span  class="category__pic"><img src="<?= $thumb_url; ?>" alt="<?= $alt_text; ?>" title="<?= $title_t; ?>"/></span>
 
                         <!-- category__info -->
                         <div class="category__info">
