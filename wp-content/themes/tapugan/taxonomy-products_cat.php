@@ -1,5 +1,22 @@
-<?php  get_header();
+<?php
 $id = get_queried_object()->term_id;
+$terms = get_terms( 'products_cat', array(
+    'hide_empty' => false,
+    'orderby' => 'term_id',
+    'parent' => 0
+) );
+
+foreach ($terms as $term){
+
+    if(term_is_ancestor_of($term->term_id,$id,'products_cat')):
+        wp_redirect(esc_url( home_url( '/' ) ));
+    endif;
+
+}
+  
+
+get_header();
+
 ?>
 
     <div class="site__ban" style="background-image: url(<?php the_field('choose_the_main_background_on_page','products_cat_'.$id.'') ?>) "></div>
@@ -35,11 +52,7 @@ $id = get_queried_object()->term_id;
                 $array_children[]=$term->term_id;
             }
 
-
-       
-
-
-
+            
             $args = array(
                 'post_type' => 'products',
                 'posts_per_page' => -1,

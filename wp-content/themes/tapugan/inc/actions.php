@@ -71,7 +71,7 @@ function add_js()
         wp_enqueue_style('contact', get_template_directory_uri().'/dist/css/contact-page.css');
     }
 
-    if (is_page_template('page-about.php')){
+    if (is_page_template('page-about.php')||is_page_template('page-careers.php')){
 
         wp_enqueue_style('about_us', get_template_directory_uri().'/dist/css/about-page.css');
 
@@ -96,6 +96,7 @@ function add_js()
         wp_enqueue_style('faq', get_template_directory_uri().'/dist/css/faq-page.css');
 
     }
+    
 
 
     wp_register_script('app',get_template_directory_uri().'/dist/js/app.min.js');

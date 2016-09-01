@@ -1,15 +1,25 @@
-<?php get_header();
+<?php
+get_header();
 $thumb_id = get_post_thumbnail_id();
 $thumb_url = wp_get_attachment_image_src($thumb_id,'full')[0];
 $category = get_the_terms( get_the_ID(), 'products_cat');
 $title = get_the_title();
 $alt_text = get_post_meta($thumb_id , '_wp_attachment_image_alt', true);
 $title_t = get_post(get_post_thumbnail_id())->post_title;
-$link_on_category = get_term_link( $category[0]->term_id );
+
+$ancestors = get_ancestors($category[0]->term_id,'products_cat');
+if($ancestors[0]==0):
+    $category_id = $category[0]->term_id;
+    $link_on_category = get_term_link( $category_id );
+    else:
+        $category_id = $ancestors[0];
+        $link_on_category = get_term_link( $category_id );
+        endif;
+
 ?>
 
 
-    <div class="site__ban" style="background-image: url(<?php the_field('choose_the_main_background_on_page','products_cat_'.$category[0]->term_id.'') ?>)"></div>
+    <div class="site__ban" style="background-image: url(<?php the_field('choose_the_main_background_on_page','products_cat_'.$category_id.'') ?>)"></div>
 
     <!-- site__content -->
     <div class="site__content">
@@ -18,7 +28,7 @@ $link_on_category = get_term_link( $category[0]->term_id );
         <div class="product">
 
             <!-- product__title -->
-            <h1 class="product__title"><?= $category[0]->name; ?></h1>
+            <h1 class="product__title"><?= $title; ?></h1>
             <!-- /product__title -->
 
             <div class="product__pic"><img src="<?= $thumb_url; ?>" alt="<?= $alt_text;  ?>" title="<?= $title_t;  ?>"></div>
@@ -63,8 +73,14 @@ $link_on_category = get_term_link( $category[0]->term_id );
                     <tr>
                         <?php $count = get_field('choose_2_or_3_columns_in_table');
                         ($count=='r3') ? $count=3 : $count=2; ?>
+                        <?php if($count=='2'): ?>
+                            <td colspan="<?= $count; ?>"><?php the_field('title_for_table_of_product'); ?></td>
+                        <?php else: ?>
+                            <td>סימן תזונתי ב</td>
+                            <td><?php the_field('title_for_table_of_product_copy'); ?></td>
+                            <td><?php the_field('title_for_table_of_product_copy_copy'); ?></td>
+                        <?php endif; ?>
 
-                        <td colspan="<?= $count; ?>"><?php the_field('title_for_table_of_product'); ?></td>
                     </tr>
                     </thead>
                     <tbody>

@@ -22,7 +22,7 @@ get_header(); ?>
 
                 <div class="about__shot-wrap">
 
-                    <?php the_field( ' about_partner_description' ); ?>
+                    <?php the_field( 'about_partner_description' ); ?>
 
                     <ul>
 
