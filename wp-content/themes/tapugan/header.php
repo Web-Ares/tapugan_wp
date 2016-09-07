@@ -68,7 +68,10 @@
                     }
                     ?>
 
-                    <a href="<?= $menu_item->url; ?>" class="menu__item menu__item_<?= $count_1;?>"><?= $menu_title; ?><span class="menu__rain"></span></a>
+                    <a href="<?= $menu_item->url; ?>" class="menu__item menu__item_<?= $count_1;?>">
+                        <span class="menu__rain"></span>
+                        <span class="menu__cloud"><span><?= ($count_1!=7)? $menu_title : '' ?></span></span>
+                    </a>
                     <?php
                     $count_1++;
                 }?>
