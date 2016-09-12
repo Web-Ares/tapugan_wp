@@ -27,6 +27,12 @@
 
         <!-- menu -->
         <div class="menu">
+
+            <!-- menu__btn -->
+            <span class="menu__btn"><span></span></span>
+            <!-- /menu__btn -->
+
+
             <div class="menu__wrap">
 
                 <?php
@@ -70,7 +76,7 @@
 
                     <a href="<?= $menu_item->url; ?>" class="menu__item menu__item_<?= $count_1;?>">
                         <span class="menu__rain"></span>
-                        <span class="menu__cloud"><span><?= ($count_1!=7)? $menu_title : '' ?></span></span>
+                        <span class="menu__cloud"><span><?= ($count_1!=7)? $menu_title : 'Home' ?></span></span>
                     </a>
                     <?php
                     $count_1++;
