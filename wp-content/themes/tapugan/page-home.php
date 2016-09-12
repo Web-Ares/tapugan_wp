@@ -54,6 +54,8 @@ get_header(); ?>
                     $current_product_id = $term->term_id;
                     $curr_name = $term->name;
                     $link_on_category = get_term_link( $term );
+               
+                    if(get_field( 'show_this_category_on_home_page','products_cat_'.$current_product_id.'' )=='show'):
                     ?>
 
                     <!-- product-preview__item -->
@@ -74,7 +76,7 @@ get_header(); ?>
                     </div>
                     <!-- /product-preview__item -->
 
-               <?php  }
+               <?php  endif; }
                 endif; ?>
 
             </div>
